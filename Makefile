@@ -1,9 +1,9 @@
-all: hexchat xchat
+all: clean hexchat xchat
 hexchat: link-hexchat
-link-hexchat: hexchatobj xmpobj
-	g++ -o main-hexchat main-hexchat.o xmp.o
+link-hexchat: hexchatobj
+	g++ -o main-hexchat main-hexchat.o /usr/local/lib/libxmp.so.4
 hexchatobj:
 	g++ -c main-hexchat.cpp -o main-hexchat.o
-xmpobj:
-	gcc -c xmp.h -o xmp.o
-
+xchat:
+clean:
+	rm -rf *.o main-hexchat
